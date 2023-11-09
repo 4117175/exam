@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Dark Mode Button | Dev Mode</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- ICONS CDN FONTAWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+<div class="btn">
+    <div class="btn__indicator">
+        <div class="btn__icon-container">
+            <i class="btn__icon fa-solid"></i>
+        </div>
+    </div>
+</div>
+<nav class="navMenu">
+    <a href="user.html">Home</a>
+    <a href="blog.html">Blog</a>
+    <a href="profile.php">Profile</a>
+    <a href="#">About</a>
+    <a href="index.html" class="logout">Logout</a>
+    <div class="dot"></div>
+</nav>
+<script src="js/main.js"></script>
+
+<div class="addbtn" id="blogLink">
+    <button class="btn1" type="button" id="openModalButton">
+        <strong>POST A BLOG</strong>
+        <div id="container-stars">
+            <div id="stars"></div>
+        </div>
+        <div id="glow">
+            <div class="circle"></div>
+            <div class="circle"></div>
+        </div>
+    </button>
+</div>
+
+<!-- Modal for posting a blog -->
+    <div id="blogModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeModalButton">&times;</span>
+            <h2>Post a Blog</h2>
+            <form id="blogForm" enctype="multipart/form-data">
+                <label for="blogTitle">Title:</label>
+                <input type="text" id="blogTitle" name="blogTitle" required>
+
+                <label for="blogContent">Content:</label>
+                <textarea id="blogContent" name="blogContent" required></textarea>
+
+                <!-- Add an input field for image -->
+                <label for="blogImage">Image:</label>
+                <input type="file" id="blogImage" name="blogImage" accept="image/*">
+
+                <button type="submit">Post</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Get references to HTML elements
+        const openModalButton = document.getElementById("openModalButton");
+        const closeModalButton = document.getElementById("closeModalButton");
+        const blogModal = document.getElementById("blogModal");
+        const blogForm = document.getElementById("blogForm");
+
+        // Open the modal when the "Post a Blog" button is clicked
+        openModalButton.addEventListener("click", function () {
+            alert("Modal opened.");
+            blogModal.style.display = "block";
+        });
+
+        // Close the modal when the close button is clicked
+        closeModalButton.addEventListener("click", function () {
+            blogModal.style.display = "none";
+        });
+
+        // Handle form submission
+        blogForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+            alert("Form submitted.");
+
+            // Get form values
+            const blogTitle = document.getElementById("blogTitle").value;
+            const blogContent = document.getElementById("blogContent").value;
+
+            // You can add your code to handle the submission here
+            // For example, send the data to the server or perform other actions
+
+            // Clear the form
+            blogForm.reset();
+            blogModal.style.display = "none"; // Close the modal after submission
+        });
+    </script>
+</body>
+</html>
